@@ -1,0 +1,131 @@
+<MyGridLayout>
+    portfolio_name:portfolio_name
+    fund_code:fund_code
+    share_amount:share_amount
+    first_price:first_price
+    add_label:add_label
+    my_portfolio_output:my_portfolio_output
+    search_fund_code:search_fund_code
+    search_button:search_button
+    search_output:search_output
+    delete_id:delete_id
+    delete_output:delete_output
+
+
+    GridLayout:
+        cols:2
+        size: root.width, root.height
+
+        GridLayout:
+            cols:2
+
+            Label:
+                font_size: 22
+                text: "Your Portfolio name"
+            TextInput:
+                id: portfolio_name
+                font_size: 22
+                multiline:False
+
+            Label:
+                font_size: 22
+                text: "Fund Code"
+            TextInput:
+                id: fund_code
+                font_size: 22
+                multiline:False
+
+            Label:
+                font_size: 22
+                text: "Share Amount"
+            TextInput:
+                id: share_amount
+                font_size: 22
+                multiline:False
+
+            Label:
+                text: "Buying Price \n(Single share)"
+                font_size: 22
+            TextInput:
+                id: first_price
+                font_size: 22
+                multiline:False
+            Button:
+                text: "Add Fund"
+                font_size: 22
+                on_press: root.save_fund_button()
+            Label:
+                id : add_label
+
+                text: "Please enter your fund's info \nto add it to your portfolio "
+
+        GridLayout:
+            cols:1
+            GridLayout:
+                size_hint_y: 0.40
+                cols:2
+                Label:
+                    text:"Enter the id \nof the record"
+                    font_size: 22
+                TextInput:
+                    id: delete_id
+                    font_size: 22
+                    multiline:False
+
+            Button:
+                size_hint_y: 0.30
+                text: "Delete the record"
+                font_size: 22
+                on_press: root.delete_a_fund()
+
+            Label:
+                id: delete_output
+
+                text: "To delete a fund from portfolio \nuse the id of that record \nYou can find the ID in \n'Show My Portfolio' section"
+
+        GridLayout:
+            cols:1
+
+            Button:
+                size_hint_y: 0.20
+                text: "Show My Portfolio"
+                font_size: 32
+                on_press: root.show_my_portfolio()
+            ScrollView:
+                size_hint_y: 1
+                pos_hint: {"x":0, "y": .11}
+                do_scroll_x: True
+                do_scroll_y: True
+
+                Label:
+                    id: my_portfolio_output
+                    pos_hint: {"x":0, "y": .11}
+                    height : root.height
+                    size_hint_x: 1
+                    size_hint_y: None
+                    text: "Database will be shown here \nDatabase will be shown here \nDatabase will be shown here \nDatabase will be shown here \n "
+
+        GridLayout:
+            cols:1
+
+            GridLayout:
+                cols:2
+                size_hint_y: 0.30
+                Label:
+                    text: "Enter a fund code"
+                    font_size: 22
+                TextInput:
+                    font_size: 22
+                    id: search_fund_code
+                    multiline:False
+            Button:
+                id: search_button
+                on_press: root.search_fund_by_code()
+                size_hint_y: 0.30
+                text: "Analyse Fund"
+                font_size: 22
+
+            Label:
+                id: search_output
+                text: "Detailed Fund Analysis"
+
